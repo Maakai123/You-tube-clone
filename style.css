@@ -1,0 +1,46 @@
+
+.subscribe {
+
+    background-color: rgb(200,0,0);
+    color: white ;
+    height: 36px;
+    width: 105px;
+    font-weight: 200px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.subscribe:hover {
+
+    opacity: 0.8;
+}
+
+.subscribe:active {
+    opacity: 0.4;
+}
+
+
+.join-Button {
+background-color: white;
+color: blue;
+height: 36px;
+width:78px;
+border-style: solid;
+border-width: 1px;
+cursor: pointer;
+border-color: blue;
+
+}
+
+
+.join-Button:hover {
+ background-color: blue;
+ color: white;
+
+}
+
+.join-Button:active {
+ opacity: 0.7;
+
+}

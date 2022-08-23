@@ -1,0 +1,208 @@
+ 
+<html>
+    <head>
+        
+        <title>My Todo App</title>
+    </head>  
+    <body>
+        
+         <input type="checkbox"></input> 
+         <input id="date-picker" type="date"/> 
+
+        <input id="todo-title"  type="text" />
+
+       <button onclick="addTodo()">Add Todo</button>
+
+       <div id="todo-list"></div>
+
+
+
+
+
+      
+
+        <script>
+            
+           //const  todos = ['groceries', 'Wash car', 'Make dinner'];
+            //convert todo's arrays from string to object since we have title
+            //and due dates
+
+            let todos = [{  
+             title: 'groceries',
+             dueDate:'2022-7-28',
+
+             id: 'id1'
+
+            },{
+
+              title:'Wash car',
+              dueDate: '2022-7-29',
+              id: 'id2',
+            }, {
+
+              title: 'Make dinner',
+              dueDate: '2022-7-30',
+              id: 'id3',
+
+            }];
+
+
+            
+          
+           render();
+
+
+           function addTodo()  {
+            const  textbox = document.getElementById('todo-title');
+            const title = textbox.value;
+
+            const datePicker = document.getElementById('date-picker');
+            const dueDate =  datePicker.value;
+            
+            //Also change the string to object
+
+            //todos.push(title);
+
+            //declare the id, the below code gets current time
+            //in milli seconds
+
+            const id = '' + new Date().getTime();
+
+            todos.push({
+              title: title,
+              dueDate: dueDate,
+            
+              //add Id to our array
+              id: id
+
+            });
+
+            render();
+
+              }
+
+             function deleteTodo(event) {
+              const deleteButton = event.target;
+              const idToDelete = deleteButton.id;
+               //target refers to id3 Button
+
+               //How to find and remove values from an array
+               //we would use the Filter method
+               todos = todos.filter(function (todo){
+                 //filter will take first array pass it to todo, and run the function
+                 //till the end, if the function returns true it will keep todo inside
+                 //todos array, if it returns false, it will take it out of the array
+                 //in this function we want to remove the todo that has IdToDelete
+                //Logic
+                //if the id of this todo matches idToDelete,return false
+                //for everything else, return true..
+
+                if (todo.id === idToDelete) {
+
+                  return false;
+
+                }else {
+
+                  return true;
+                }
+
+                });
+               
+ 
+
+
+             }
+
+
+            function render() {
+          // reset our list
+            document.getElementById('todo-list').innerHTML = '';
+            
+            todos.forEach(function(todo) {
+
+              const element = document.createElement('div');
+              element.innerText = todo.title + ' ' + todo.dueDate;
+
+              const deleteButton = document.createElement('Button');
+              deleteButton.innerText = 'Delete';
+              //add style to shift the Buttons
+              deleteButton.style = 'margin-left: 12px';
+              //Lets Make the deleteButton work
+              deleteButton.onclick = deleteTodo;
+              deletButton.id = todo.id;
+              
+              element.appendChild(deleteButton);
+
+              const todoList = document.getElementById('todo-list');
+              //document.body.appendChild(element);
+              todoList.appendChild(element);
+
+            });
+
+
+
+
+}
+
+
+
+ 
+
+
+
+
+
+
+
+    
+          
+            //use loop to run and loop all the codes
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           function changeToDone() {
+
+            let button = document.getElementById('todo-button');
+            button.innerText = 'Done';
+           }
+
+             
+           let count = 0;
+
+           function increase() {
+              count = count +1;
+              let counter = document.getElementById('counter');
+              counter.innerText = count;
+
+           }
+
+
+           
+        </script>
+
+
+
+    </body>
+
+
+
+
+</html>
+
